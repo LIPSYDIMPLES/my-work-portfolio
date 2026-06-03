@@ -1,20 +1,29 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Praise Hombarume - Personal Portfolio
 
-# Run and deploy your AI Studio app
+This is my personal portfolio website. It shows my education, software projects, skills, and experience as a Computer Science and Software Engineering student.
 
-This contains everything you need to run your app locally.
+## 🛠️ Built With
 
-View your app in AI Studio: https://ai.studio/apps/bf708df5-fbd6-4c7c-9676-0bd9c754fe04
+- **React**: To build the website interface.
+- **TypeScript**: To write clean and safe code.
+- **Tailwind CSS**: To style the website and make it look clean on phones and computers.
+- **Lucide Icons**: To show simple icons.
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## 💻 How to Run This Project on Your Computer
 
+To run this website locally, make sure you have [Node.js](https://nodejs.org/) installed.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Step 1: Install Dependencies
+Open your terminal inside this project folder and run:
+```bash
+npm install
+```
+
+### Step 2: Start the Website
+Run the development command:
+```bash
+npm run dev
+```
+Now, open your web browser and go to [http://localhost:3000](http://localhost:3000) to see the website live!
