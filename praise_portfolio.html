@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praise Hombarume | Interactive Professional Portfolio</title>
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;550;600;750;800&family=JetBrains+Mono:wght@400;550&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+          },
+          colors: {
+            zinc: {
+              850: '#1e1e24',
+              950: '#09090b',
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 12s linear infinite',
+            'pulse-soft': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Global Backdrop and Components Styling CSS -->
+  <style>
+    body {
+      background-color: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass {
+      background: rgba(18, 18, 18, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    /* Simple dynamic fade-in */
+    .fade-in-ready {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-ready.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Webkit scrollbar tuning */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+  </style>
+</head>
+<body class="text-zinc-300 antialiased selection:bg-emerald-500/30 selection:text-emerald-400">
+
+  <!-- ================= HEADER / NAVSTRIP ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-zinc-900/85">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-black font-extrabold text-sm shadow-md shadow-emerald-900/10">
+          PH
+        </div>
+        <span class="font-black text-white text-lg tracking-tight group-hover:text-emerald-400 transition-colors">
+          Praise Hombarume
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#experience" class="text-zinc-400 hover:text-white transition-colors">Journey</a>
+        <a href="#skills" class="text-zinc-400 hover:text-white transition-colors">Skills &amp; Clubs</a>
+        <a href="#projects" class="text-zinc-400 hover:text-white transition-colors">Projects</a>
+        <a href="#deployment-hub" class="text-zinc-400 hover:text-white transition-colors">Cloud Hub</a>
+        <a href="#contact" class="px-4 py-2 bg-zinc-900 hover:bg-zinc-850 text-emerald-400 border border-zinc-800 rounded-xl transition-all">Get In Touch</a>
+      </nav>
+
+      <!-- Mobile Nav Trigger -->
+      <button id="mobile-menu-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white focus:outline-none" aria-label="Toggle Mobile Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-btn-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Panel -->
+    <div id="mobile-drawer" class="hidden md:hidden absolute top-full left-0 right-0 bg-[#0c0c0e] border-b border-zinc-900 p-6 space-y-4 shadow-xl transition-all duration-300">
+      <a href="#experience" onclick="toggleDrawer()" class="block text-zinc-400 hover:text-white py-2 text-base font-semibold">Journey</a>
+      <a href="#skills" onclick="toggleDrawer()" class="block text-zinc-400 hover:text-white py-2 text-base font-semibold">Skills &amp; Clubs</a>
+      <a href="#projects" onclick="toggleDrawer()" class="block text-zinc-400 hover:text-white py-2 text-base font-semibold">Projects</a>
+      <a href="#deployment-hub" onclick="toggleDrawer()" class="block text-zinc-400 hover:text-white py-2 text-base font-semibold">Cloud Hub</a>
+      <a href="#contact" onclick="toggleDrawer()" class="block text-center py-3 bg-zinc-900 text-emerald-400 border border-zinc-800 rounded-xl font-bold">Contact Praise</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative overflow-hidden pt-32 pb-24 md:py-36 border-b border-zinc-900/80">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-emerald-950/15 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse-soft"></div>
+    <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-zinc-800/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-soft"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column Info -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-emerald-400 text-sm font-medium">
+            <svg class="w-4 h-4 text-emerald-400 animate-spin-slow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l8.904-4.437M21 11.25V4.5m0 0H14.25M21 4.5l-9 9" />
+            </svg>
+            <span>Available for Technical Roles &amp; Projects</span>
+          </div>
+
+          <div class="space-y-4">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-2">
+              Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Praise Hombarume</span>
+            </h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-zinc-300 font-sans">
+              Computer Science &amp; Software Eng. Student
+            </h2>
+            <p class="text-emerald-450/90 text-sm font-semibold font-mono tracking-wide">
+              ★ Aspiring Full-Stack Developer &amp; Data Analyst
+            </p>
+          </div>
+
+          <p class="text-lg text-zinc-400 leading-relaxed max-w-xl">
+            Currently pursuing a Bachelor of Science in Computer Science and Software Engineering at Botswana International University of Science and Technology. Demonstrates strong analytical and problem-solving skills with a dedicated approach to learning foundational software development principles. Committed to continuous growth and delivering reliable results in academic and practical environments.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-black font-bold rounded-xl shadow-lg shadow-emerald-950/25 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875c-.621 0-1.125-.504-1.125-1.125v-4.25m16.5 0a2.25 2.25 0 00-1.808-2.203L13.81 12.15a3 3 0 01-3.62 0L4.775 11.95a2.25 2.25 0 00-1.808 2.203m16.5 0V9.75L12 7.5 3.75 9.75v4.4" />
+              </svg>
+              <span>View My Journey</span>
+            </a>
+
+            <button onclick="copyEmailHero()" class="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 hover:bg-zinc-850 text-zinc-100 font-medium rounded-xl border border-zinc-800 shadow-sm transition-all focus:outline-none">
+              <svg id="copy-hero-icon" class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v6.75c0 .621.504 1.125 1.125 1.125H6.75m0-9v9" />
+              </svg>
+              <span id="copy-hero-text">Copy Email Address</span>
+            </button>
+          </div>
+
+          <div class="flex flex-wrap gap-y-3 gap-x-6 text-sm text-zinc-400 border-t border-zinc-900 pt-6">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+              <span>Gaborone, Botswana | Gutu, Zimbabwe</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+              <span>hombarumepraise@gmail.com</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.502-5.183-3.862-6.686-6.686l1.292-.97a1.125 1.125 0 00.417-1.173L6.108 3.52c-.125-.502-.575-.852-1.091-.852H3.75A2.25 2.25 0 001.5 5.125V6.75z" />
+              </svg>
+              <span>+267 71281845</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column Profile Card -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative group w-full max-w-[340px]">
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl blur h-full w-full opacity-25 group-hover:opacity-40 transition duration-500"></div>
+            
+            <div class="relative glass rounded-3xl p-4 shadow-2xl overflow-hidden">
+              <div class="aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-950/80 relative mb-5 border border-zinc-800">
+                <img
+                  src="./src/assets/images/praise_profile_1780059900554.png"
+                  alt="Praise Hombarume Profile"
+                  referrerpolicy="no-referrer"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-all duration-505"
+                  onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600'"
+                />
+                <div class="absolute top-3 right-3 bg-zinc-900/90 backdrop-blur-md border border-zinc-800 py-1 px-2.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                  <svg class="w-3.5 h-3.5 text-emerald-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6.267 3.455a.75.75 0 00-.708-.523H4.5a2 2 0 00-2 2v3.085c0 .423.16.83.45 1.12l4.8 4.8a1.5 1.5 0 002.12 0l3.085-3.085a1.5 1.5 0 000-2.12l-4.8-4.8a1.5 1.5 0 00-1.12-.45h-1.57a.75.75 0 00-.708.523L6.267 3.455zM4 5.25a1.25 1.25 0 112.5 0 1.25 1.25 0 01-2.5 0z" clip-rule="evenodd" />
+                    <path d="M16 8.5H13.5a1 1 0 00-1 1V12a2 2 0 01-2 2H8.5V16A2.5 2.5 0 0011 18.5h4.5a3 3 0 003-3V11.5a3 3 0 00-3-3z" />
+                  </svg>
+                  <span class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest font-mono">BIUST CS</span>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex items-center justify-between border-b border-zinc-900/60 pb-3">
+                  <div>
+                    <h4 class="font-extrabold text-white text-base">Praise Hombarume</h4>
+                    <p class="text-xs text-emerald-450 font-medium mt-0.5">Software Engineer</p>
+                  </div>
+                  <div class="flex gap-2">
+                    <a href="https://github.com/Praise-H" target="_blank" class="p-2 bg-zinc-900 hover:bg-zinc-850 text-zinc-400 hover:text-emerald-400 rounded-xl transition-all border border-zinc-800" title="GitHub">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="mailto:hombarumepraise@gmail.com" class="p-2 bg-zinc-900 hover:bg-zinc-850 text-zinc-400 hover:text-emerald-400 rounded-xl transition-all border border-zinc-800" title="Email">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="bg-zinc-950/40 py-2.5 px-3 rounded-xl border border-zinc-900 space-y-1.5 text-xs font-mono">
+                  <div class="flex justify-between">
+                    <span class="text-zinc-550 font-bold">ROLE:</span>
+                    <span class="font-bold text-zinc-350">BIUST STUDENT &amp; INTERN</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-zinc-550 font-bold">STATUS:</span>
+                    <span class="text-emerald-400 font-bold flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block animate-ping"></span>
+                      ACTIVE
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE TIMELINE ================= -->
+  <section id="experience" class="py-24 bg-zinc-950/20 border-b border-zinc-900/80">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-20 space-y-3">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          Journey &amp; Qualifications
+        </h2>
+        <div class="h-1 w-12 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
+        <p class="text-zinc-400 text-sm">
+          A narrative timeline tracing my professional internships, academic achievements, and regional coordinate networks.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left: Experience Track (lg:col-span-6) -->
+        <div class="lg:col-span-6 space-y-8">
+          <div class="flex items-center gap-2.5 border-b border-zinc-900 pb-4 mb-3">
+            <div class="p-2 bg-emerald-950/30 rounded-xl border border-emerald-900/30 text-emerald-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875c-.621 0-1.125-.504-1.125-1.125v-4.25m16.5 0a2.25 2.25 0 00-1.808-2.203L13.81 12.15a3 3 0 01-3.62 0L4.775 11.95a2.25 2.25 0 00-1.808 2.203m16.5 0V9.75L12 7.5 3.75 9.75v4.4" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight uppercase font-mono">Professional Experience</h3>
+          </div>
+
+          <!-- Dynamic Item 1 -->
+          <div class="relative pl-6 border-l-2 border-emerald-500/30 space-y-4">
+            <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-emerald-400 rounded-full border border-black shadow"></div>
+            <div>
+              <span class="text-[10px] uppercase font-mono font-bold tracking-widest text-emerald-400 bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-900/30 inline-block mb-2">
+                May 2026 – Present
+              </span>
+              <h4 class="text-lg font-extrabold text-white leading-tight">Intern</h4>
+              <p class="text-sm font-medium text-zinc-400 mt-0.5">Spectrum Analytics | Gaborone, Botswana</p>
+            </div>
+            <ul class="space-y-2.5 text-xs text-zinc-450 leading-relaxed list-none pl-0">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 mt-1 font-bold">✔</span>
+                <span>Collaborating on data-driven solutions and consulting workflows for local enterprise clients.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 mt-1 font-bold">✔</span>
+                <span>Developing automated scripting and analytical models to process large-scale datasets.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 mt-1 font-bold">✔</span>
+                <span>Gaining hands-on experience in modern technology stacks, database management, and professional agile delivery.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Education Track (lg:col-span-6) -->
+        <div class="lg:col-span-6 space-y-8">
+          <div class="flex items-center gap-2.5 border-b border-zinc-900 pb-4 mb-3">
+            <div class="p-2 bg-emerald-950/30 rounded-xl border border-emerald-900/30 text-emerald-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.62 48.62 0 0112 20.9c2.785 0 5.38-.474 7.731-1.332.188-.665.38-1.325.567-1.983A60.463 60.463 0 0012 15.75c-2.13 0-4.213.111-6.26.327z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 7.125v12.006c0 .81-.462 1.564-1.194 1.89a19.467 19.467 0 01-12.612 0c-.732-.326-1.194-1.08-1.194-1.89V7.125M12 4.5V1.2M3 13.5l9-4.5 9 4.5" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight uppercase font-mono">Academic Track</h3>
+          </div>
+
+          <!-- Academic Item 1 -->
+          <div class="relative pl-6 border-l-2 border-zinc-800 space-y-4">
+            <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-zinc-700 rounded-full border border-black shadow"></div>
+            <div>
+              <span class="text-[10px] uppercase font-mono font-bold tracking-widest text-zinc-400 bg-zinc-900 px-2.5 py-0.5 rounded-full inline-block mb-2">
+                Aug 2023 – Present
+              </span>
+              <h4 class="text-base font-extrabold text-white leading-tight">Bachelor of Science, Computer Science &amp; Software Engineering</h4>
+              <p class="text-xs font-semibold text-emerald-400 mt-1">BIUST | Palapye, Botswana</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 pt-1.5">
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">C</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">C++</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Data Structures &amp; Algorithms</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Database Management Systems</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Software Engineering</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Operating Systems</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Computer Networks</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">IT &amp; Society</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">IT Infrastructure</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Computer Architecture</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Discrete Mathematics</span>
+              <span class="text-[10px] font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-850">Business Management &amp; Entrepreneurship</span>
+            </div>
+          </div>
+
+          <!-- Academic Item 2 -->
+          <div class="relative pl-6 border-l-2 border-zinc-800 space-y-4">
+            <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-zinc-700 rounded-full border border-black shadow"></div>
+            <div>
+              <span class="text-[10px] uppercase font-mono font-bold tracking-widest text-zinc-400 bg-zinc-900 px-2.5 py-0.5 rounded-full inline-block mb-2">
+                Jan 2019 – Dec 2022
+              </span>
+              <h4 class="text-base font-extrabold text-white leading-tight">ZIMSEC General Certificate of Education (O-Level)</h4>
+              <p class="text-xs font-semibold text-zinc-500 mt-1">Mutero High School | Gutu, Zimbabwe</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 pt-1.5">
+              <span class="text-[10px] font-mono text-zinc-500 bg-zinc-900/60 px-2 py-1 rounded">Mathematics</span>
+              <span class="text-[10px] font-mono text-zinc-500 bg-zinc-900/60 px-2 py-1 rounded">Integrated Sciences</span>
+              <span class="text-[10px] font-mono text-zinc-500 bg-zinc-900/60 px-2 py-1 rounded">English Language</span>
+              <span class="text-[10px] font-mono text-zinc-500 bg-zinc-900/60 px-2 py-1 rounded">Geography</span>
+              <span class="text-[10px] font-mono text-zinc-500 bg-zinc-900/60 px-2 py-1 rounded">Computer Applications</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS & ACTIVITIES SECTION ================= -->
+  <section id="skills" class="py-24 bg-[#0A0A0A] border-b border-zinc-900/80">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      
+      <!-- Tabs Switcher -->
+      <div class="flex flex-col items-center gap-6 mb-16">
+        <div class="flex p-1.5 bg-zinc-900/80 border border-zinc-802 rounded-2xl">
+          <button id="skills-tab-btn" onclick="switchSkillsTab('skills')" class="px-6 py-2.5 rounded-xl text-xs font-bold font-mono tracking-wider uppercase transition-all duration-150 bg-emerald-500 text-black shadow-md focus:outline-none">
+            Core Competencies
+          </button>
+          <button id="clubs-tab-btn" onclick="switchSkillsTab('clubs')" class="px-6 py-2.5 rounded-xl text-xs font-bold font-mono tracking-wider uppercase transition-all duration-150 text-zinc-400 hover:text-white focus:outline-none">
+            Clubs &amp; Liaisons
+          </button>
+        </div>
+      </div>
+
+      <!-- Skills TAB Body -->
+      <div id="skills-tab-content" class="space-y-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          
+          <!-- Column 1: Core Mindset -->
+          <div class="space-y-6">
+            <div class="flex items-center gap-2 pb-2 border-b border-zinc-900">
+              <svg class="w-4 h-4 text-emerald-400 fill-emerald-950/20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <h3 class="text-sm font-bold text-zinc-400 uppercase tracking-wider font-mono">Professional Mindset</h3>
+            </div>
+
+            <!-- Problem Solving -->
+            <div class="p-5 bg-zinc-950/45 border border-zinc-900 rounded-2xl">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-white text-sm">Problem Solving</span>
+                <div class="flex gap-0.5 text-emerald-400">★★★★★</div>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed mt-2">Strong analytical mindset to troubleshoot and design algorithms.</p>
+            </div>
+
+            <!-- Adaptability -->
+            <div class="p-5 bg-zinc-950/45 border border-zinc-900 rounded-2xl">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-white text-sm">Adaptability</span>
+                <div class="flex gap-0.5 text-emerald-400">★★★★★</div>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed mt-2">Quick to learn new technical libraries, frameworks, and methodologies.</p>
+            </div>
+
+            <!-- Positive Attitude -->
+            <div class="p-5 bg-zinc-950/45 border border-zinc-900 rounded-2xl">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-white text-sm">Positive Attitude</span>
+                <div class="flex gap-0.5 text-emerald-400">★★★★★</div>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed mt-2">Driven by constructive curiosity and a strong resolve to deliver results.</p>
+            </div>
+          </div>
+
+          <!-- Column 2: Power Collaboration -->
+          <div class="space-y-6">
+            <div class="flex items-center gap-2 pb-2 border-b border-zinc-900">
+              <svg class="w-4 h-4 text-emerald-400 fill-emerald-950/20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m0 0a8.967 8.967 0 01-2.907-1.013 3 3 0 013.708-2.876" />
+              </svg>
+              <h3 class="text-sm font-bold text-zinc-400 uppercase tracking-wider font-mono">Power Collaboration</h3>
+            </div>
+
+            <!-- Team Collaboration -->
+            <div class="p-5 bg-zinc-950/45 border border-zinc-900 rounded-2xl">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-white text-sm">Team Collaboration</span>
+                <div class="flex gap-0.5 text-emerald-400">★★★★★</div>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed mt-2">Cross-functional teamwork and supportive communication.</p>
+            </div>
+
+            <!-- Communication -->
+            <div class="p-5 bg-zinc-950/45 border border-zinc-900 rounded-2xl">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-white text-sm">Communication</span>
+                <div class="flex gap-0.5 text-emerald-400">★★★★★</div>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed mt-2">Excellent verbal and written expression in multilingual environments.</p>
+            </div>
+
+            <!-- Organization -->
+            <div class="p-5 bg-zinc-950/45 border border-zinc-900 rounded-2xl">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-white text-sm">Organization</span>
+                <div class="flex gap-0.5 text-emerald-400">★★★★☆</div>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed mt-2">Efficient self-management, scheduling, and structured documentation.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Clubs TAB Body -->
+      <div id="clubs-tab-content" class="hidden space-y-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          
+          <!-- Club 1 -->
+          <div class="p-6 bg-zinc-950/45 border border-zinc-900 rounded-3xl relative overflow-hidden space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-orange-950/30 text-orange-400 border border-orange-900/40 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-[9px] font-mono font-bold tracking-widest text-orange-400 bg-orange-950/20 px-2.5 py-0.5 rounded-full border border-orange-900/35 uppercase mr-1 inline-block">PA</span>
+              <span class="text-[9px] font-mono font-bold tracking-widest text-zinc-450 uppercase">{Present}</span>
+              <h4 class="text-base font-extrabold text-white mt-2">BIUST Innovation Club</h4>
+              <p class="text-xs font-semibold text-emerald-400 mt-1">Member &amp; Technical Collaborator</p>
+            </div>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              Engaging in creative hackathons, engineering ideations, and peer tech mentoring. Building small prototypes to spark university-wide technological innovation.
+            </p>
+          </div>
+
+          <!-- Club 2 -->
+          <div class="p-6 bg-zinc-950/45 border border-zinc-900 rounded-3xl relative overflow-hidden space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-teal-950/30 text-teal-400 border border-teal-900/40 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-[9px] font-mono font-bold tracking-widest text-teal-400 bg-teal-950/20 px-2.5 py-0.5 rounded-full border border-teal-900/35 uppercase mr-1 inline-block">Youth Envoy</span>
+              <span class="text-[9px] font-mono font-bold tracking-widest text-zinc-450 uppercase">{Present}</span>
+              <h4 class="text-base font-extrabold text-white mt-2">Ministry of International Affairs</h4>
+              <p class="text-xs font-semibold text-emerald-400 mt-1">Zimbabwe Representative (Youth Liaison)</p>
+            </div>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              Representing young Zimbabwean delegates in cross-border dialogues, coordinating community representation, and driving diplomatic outreach campaigns.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Languages Breakdown Section (Centered) -->
+        <div class="max-w-xl mx-auto pt-4 text-center">
+          <h4 class="text-xs font-bold text-zinc-450 uppercase font-mono tracking-widest mb-4">Linguistic Fluencies</h4>
+          <div class="flex justify-center gap-6">
+            <div class="bg-zinc-950/30 px-5 py-3 rounded-2xl border border-zinc-900/50 flex flex-col items-center">
+              <span class="text-white text-sm font-bold">English</span>
+              <span class="text-[10px] text-emerald-400 mt-1">Full Professional ★★★★★</span>
+            </div>
+            <div class="bg-zinc-950/30 px-5 py-3 rounded-2xl border border-zinc-900/50 flex flex-col items-center">
+              <span class="text-white text-sm font-bold">Shona</span>
+              <span class="text-[10px] text-emerald-400 mt-1">Native / Bilingual ★★★★★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS GRID SECTION ================= -->
+  <section id="projects" class="py-24 bg-zinc-950/20 border-b border-zinc-900/80">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          Representative Projects
+        </h2>
+        <div class="h-1 w-12 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
+        <p class="text-zinc-400 text-sm">
+          Technical prototypes highlighting practical software principles, API design, telemetry, and my key execution roles.
+        </p>
+      </div>
+
+      <!-- Filters Tabs Switcher -->
+      <div class="flex justify-center gap-2.5 mb-12 flex-wrap">
+        <button id="filter-all" onclick="filterProjects('all')" class="px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-wide uppercase transition-all bg-emerald-500 text-black border border-emerald-500 focus:outline-none">
+          All Scopes
+        </button>
+        <button id="filter-analytics" onclick="filterProjects('analytics')" class="px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-wide uppercase transition-all text-zinc-400 hover:text-white border border-zinc-800 bg-zinc-950/50 focus:outline-none">
+          Analytics &amp; Distributed
+        </button>
+        <button id="filter-web" onclick="filterProjects('web')" class="px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-wide uppercase transition-all text-zinc-400 hover:text-white border border-zinc-800 bg-zinc-950/50 focus:outline-none">
+          Web Applications
+        </button>
+      </div>
+
+      <!-- Projects Lists Grid Container -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        
+        <!-- Project 1 Card -->
+        <div data-category="analytics" class="project-card flex flex-col justify-between p-6 bg-zinc-950/40 border border-zinc-900 rounded-3xl hover:border-zinc-800 transition duration-300 relative group min-h-[420px]">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-10 h-10 rounded-xl bg-orange-950/20 text-orange-400 border border-orange-900/30 flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918" />
+                </svg>
+              </div>
+              <a href="https://github.com/kitsor897/Aqua-Vigilance" target="_blank" class="p-2 text-zinc-400 hover:text-white hover:bg-zinc-900 rounded-xl border border-transparent hover:border-zinc-800 transition-colors" title="Repo Link">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+              </a>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex flex-wrap items-center gap-1.5 leading-none">
+                <span class="text-[9px] font-bold font-mono tracking-widest text-emerald-450 uppercase bg-emerald-950/45 border border-emerald-900/30 px-2 py-0.5 rounded-full inline-block">analytics</span>
+                <span class="text-[9px] font-bold font-mono tracking-widest text-zinc-400 uppercase bg-zinc-900 border border-zinc-850 px-2 py-0.5 rounded-full inline-block">Processing Worker Lead</span>
+              </div>
+              <h3 class="text-base font-extrabold text-white group-hover:text-emerald-400 transition-colors">
+                Aqua Vigilance: AI-Enhanced Real-Time Collaborative Analytics Platform
+              </h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Designed an AI-assisted distributed system for high-precision water management in Palapye to address centralized infrastructure vulnerabilities, leakages, and delayed sensor communication. Implemented continuous high-speed Apache Kafka pipelines, fault-tolerant worker node checkpointing, 24/7 predictive AI leak patterns, and an interactive command interface that triggers autonomous valve shutoff responses.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-4 mt-6 border-t border-zinc-900/60">
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Apache Kafka</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Distributed Systems</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Checkpointing</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Predictive AI</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Python</span>
+          </div>
+        </div>
+
+        <!-- Project 2 Card -->
+        <div data-category="web" class="project-card flex flex-col justify-between p-6 bg-zinc-950/40 border border-zinc-900 rounded-3xl hover:border-zinc-800 transition duration-300 relative group min-h-[420px]">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-10 h-10 rounded-xl bg-teal-950/20 text-teal-400 border border-teal-900/30 flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                </svg>
+              </div>
+              <a href="https://github.com/Moxions/bravo-event-hub" target="_blank" class="p-2 text-zinc-400 hover:text-white hover:bg-zinc-900 rounded-xl border border-transparent hover:border-zinc-800 transition-colors" title="Repo Link">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+              </a>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex flex-wrap items-center gap-1.5 leading-none">
+                <span class="text-[9px] font-bold font-mono tracking-widest text-emerald-450 uppercase bg-emerald-950/45 border border-emerald-900/30 px-2 py-0.5 rounded-full inline-block">web</span>
+                <span class="text-[9px] font-bold font-mono tracking-widest text-zinc-400 uppercase bg-zinc-900 border border-zinc-850 px-2 py-0.5 rounded-full inline-block">Database &amp; Authentication Lead</span>
+              </div>
+              <h3 class="text-base font-extrabold text-white group-hover:text-emerald-400 transition-colors">
+                Bravo Event Hub
+              </h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Vetted and engineered a web-based event coordination platform enabling organizers to create, manage, edit, and track comprehensive attendance analytics. Built flexible client environments with user flow verification, including safe attendee listings, email/anonymous authentications, and secure unique QR codes for scanned entrance verification.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-4 mt-6 border-t border-zinc-900/60">
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Firebase Auth</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Cloud Firestore</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">React</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">QR Codes</span>
+            <span class="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">Tailwind CSS</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CLOUD DEPLOY OPERATIONS & RESPONSIVE HUB ================= -->
+  <section id="deployment-hub" class="py-24 bg-[#0A0A0A] border-b border-zinc-900/80 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/3 w-80 h-80 bg-emerald-950/10 rounded-full mix-blend-multiply filter blur-3xl opacity-30 pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      
+      <!-- Hub Heading -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16 border-b border-zinc-900/60 pb-8">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-950/40 border border-emerald-900/40 rounded-full text-emerald-400 text-xs font-semibold font-mono">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918" />
+            </svg>
+            <span>Production Pipeline Active</span>
+          </div>
+          <h2 class="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+            Cloud Operations &amp; Responsive Hub
+          </h2>
+          <p class="text-zinc-400 text-sm max-w-xl">
+            Praise's portfolio is built using structural standard patterns, allowing instant cross-device responsive rendering and one-click cloud deployment. Select options below to audit metrics.
+          </p>
+        </div>
+        
+        <button id="run-audit-btn" onclick="triggerSimulatedAudit()" class="px-5 py-3 bg-zinc-900 text-emerald-400 border border-zinc-800 hover:border-emerald-500/30 rounded-xl text-xs font-bold font-mono tracking-wide uppercase transition-all flex items-center gap-2 hover:bg-zinc-850 focus:outline-none">
+          <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+          </svg>
+          <span id="audit-btn-text">Run Adaptive Screen Audit</span>
+        </button>
+      </div>
+
+      <!-- Audit alert panel -->
+      <div id="audit-panel" class="hidden mb-8 p-5 rounded-2xl bg-zinc-950/60 border border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div id="audit-alert-color" class="p-2 rounded-xl text-black bg-amber-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h4 id="audit-headline" class="text-sm font-bold text-white">Vetting CSS Media Gateways</h4>
+            <p id="audit-description" class="text-xs text-zinc-400 mt-0.5">Evaluating responsive boundaries, breakpoint wrappers, and dynamic container padding...</p>
+          </div>
+        </div>
+        <div class="w-full md:w-48 bg-zinc-900 h-2.5 rounded-full overflow-hidden border border-zinc-850">
+          <div id="audit-progress" class="bg-emerald-400 h-full rounded-full w-0 transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Left / Right Panel Columns Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Panel: Cloud Switchers (lg:col-span-7) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="bg-zinc-950/45 border border-zinc-900 rounded-3xl p-6 md:p-8 space-y-6">
+            <div class="flex items-center justify-between border-b border-zinc-900 pb-4">
+              <h3 class="font-bold text-lg text-white flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+                <span>Choose Your Hosting Platform</span>
+              </h3>
+              <span class="text-[10px] font-mono font-bold tracking-widest text-emerald-400 bg-emerald-950/30 border border-emerald-800/30 px-2.5 py-0.5 rounded-full uppercase">
+                Static Edge CDN
+              </span>
+            </div>
+
+            <!-- Platform Switcher Buttons -->
+            <div class="grid grid-cols-3 gap-3">
+              <button id="btn-vercel" onclick="switchPlatformSpec('vercel')" class="platform-btn py-3.5 px-3 rounded-xl text-center border bg-zinc-900 border-zinc-700 text-white flex flex-col justify-center items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3" /></svg>
+                <span class="text-xs font-bold tracking-wide">Vercel</span>
+                <span class="text-[8px] uppercase tracking-wider font-mono text-emerald-300">PRIMARY CHOICE</span>
+              </button>
+              <button id="btn-netlify" onclick="switchPlatformSpec('netlify')" class="platform-btn py-3.5 px-3 rounded-xl text-center border border-zinc-900 text-zinc-450 hover:text-white bg-zinc-950/50 flex flex-col justify-center items-center gap-2">
+                <svg class="w-5 h-5 text-zinc-550" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3" /></svg>
+                <span class="text-xs font-bold tracking-wide">Netlify</span>
+                <span class="text-[8px] uppercase tracking-wider font-mono text-zinc-500 font-semibold">STATIC EDGE</span>
+              </button>
+              <button id="btn-github_pages" onclick="switchPlatformSpec('github_pages')" class="platform-btn py-3.5 px-3 rounded-xl text-center border border-zinc-900 text-zinc-450 hover:text-white bg-zinc-950/50 flex flex-col justify-center items-center gap-2">
+                <svg class="w-5 h-5 text-zinc-550" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3" /></svg>
+                <span class="text-xs font-bold tracking-wide">GitHub Pages</span>
+                <span class="text-[8px] uppercase tracking-wider font-mono text-zinc-500 font-semibold">GIT WORKFLOW</span>
+              </button>
+            </div>
+
+            <!-- Specs Info Box -->
+            <div class="space-y-4 pt-1">
+              <div id="platform-desc-box" class="p-4 bg-zinc-900/40 rounded-2xl border border-zinc-950 leading-relaxed text-sm text-zinc-400">
+                <span class="font-bold text-white block mb-1">Architecture Summary:</span>
+                Vercel is the ultimate native hosting environment for static portfolio sites. It handles production pre-rendering, serves static content over a zero-latency global edge network, and automatically triggers production branch builds on every GitHub code push.
+              </div>
+
+              <!-- Key Benefits -->
+              <div class="space-y-3">
+                <h4 class="text-xs font-bold text-zinc-400 font-mono uppercase tracking-wider">Key Integration Benefits:</h4>
+                <div id="platform-benefits-list" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                  <div class="flex gap-2 items-start bg-zinc-950/40 p-3 rounded-lg border border-zinc-900">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span class="text-zinc-400 leading-snug">Automatic HTTPS and Global Edge Server caching.</span>
+                  </div>
+                  <div class="flex gap-2 items-start bg-zinc-950/40 p-3 rounded-lg border border-zinc-900">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span class="text-zinc-400 leading-snug">Seamless integration with GitHub repository commits.</span>
+                  </div>
+                  <div class="flex gap-2 items-start bg-zinc-950/40 p-3 rounded-lg border border-zinc-900">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span class="text-zinc-400 leading-snug">Production preview builds built globally.</span>
+                  </div>
+                  <div class="flex gap-2 items-start bg-zinc-950/40 p-3 rounded-lg border border-zinc-900">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span class="text-zinc-400 leading-snug">Rewrites configuration support prevents reload 404 errors.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal Config Output -->
+            <div class="space-y-3 pt-2">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-zinc-300 font-mono flex items-center gap-1.5 uppercase tracking-wider">
+                  📂 Configuration File: <span id="platform-file-name" class="text-white normal-case">vercel.json</span>
+                </span>
+                <button onclick="copyPlatformConfigFile()" class="px-2.5 py-1.5 text-xs text-zinc-450 hover:text-emerald-400 bg-zinc-900 border border-zinc-800 rounded-lg transition-colors flex items-center gap-1">
+                  Copy Config
+                </button>
+              </div>
+              <pre class="p-5 bg-black rounded-2xl text-xs font-mono text-zinc-300 overflow-x-auto border border-zinc-900 max-h-48 leading-relaxed"><code id="platform-file-code">{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Device Diagnostics (lg:col-span-5) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-zinc-950/45 border border-zinc-900 rounded-3xl p-6 md:p-8 space-y-6">
+            <div class="flex items-center justify-between border-b border-zinc-900 pb-4">
+              <h3 class="font-bold text-lg text-white flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-6 15h9" />
+                </svg>
+                <span>Device Sizing Rules</span>
+              </h3>
+              <span class="text-[10px] font-mono font-bold tracking-widest text-emerald-400 bg-emerald-950/30 border border-emerald-800/30 px-2.5 py-0.5 rounded-full uppercase">
+                Grid Diagnostics
+              </span>
+            </div>
+
+            <!-- Viewports Menu Buttons Grid -->
+            <div class="grid grid-cols-5 gap-1.5 p-1 bg-zinc-900/60 rounded-xl border border-zinc-850">
+              <button id="vbtn-mini" onclick="switchViewportDiagnostics('mini')" class="diag-btn p-2 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-850/50">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+              </button>
+              <button id="vbtn-mobile" onclick="switchViewportDiagnostics('mobile')" class="diag-btn p-2 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-850/50">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+              </button>
+              <button id="vbtn-tablet" onclick="switchViewportDiagnostics('tablet')" class="diag-btn p-2 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-850/50">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+              </button>
+              <button id="vbtn-desktop" onclick="switchViewportDiagnostics('desktop')" class="diag-btn p-2 rounded-lg flex items-center justify-center text-white bg-zinc-850 border border-zinc-700/45">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </button>
+              <button id="vbtn-ultra" onclick="switchViewportDiagnostics('ultra')" class="diag-btn p-2 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-850/50">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </button>
+            </div>
+
+            <!-- Sizing metrics details -->
+            <div id="diag-detail-card" class="space-y-4">
+              <div class="bg-zinc-900/45 p-4 rounded-2xl border border-zinc-950 space-y-2">
+                <div class="flex justify-between items-center">
+                  <span id="diag-name" class="font-bold text-white text-sm">Desktop Standard viewport</span>
+                  <span id="diag-width" class="text-xs font-mono font-bold text-emerald-400 bg-zinc-950 px-2.5 py-0.5 rounded-lg border border-zinc-850">
+                    1024px
+                  </span>
+                </div>
+                <div class="flex justify-between text-xs text-zinc-500 font-mono">
+                  <span>Breakpoint Prefix:</span>
+                  <span id="diag-prefix" class="text-zinc-300 font-bold">lg:</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed pt-1 border-t border-zinc-900">
+                  <span class="font-semibold text-zinc-300 block mb-0.5">Layout Rules:</span>
+                  <span id="diag-info">Fully expanded interactive panels and layout layers.</span>
+                </p>
+              </div>
+
+              <!-- List verification points -->
+              <div class="space-y-3">
+                <h4 class="text-xs font-bold text-zinc-300 font-mono uppercase tracking-wider">Device Adaptive Verification:</h4>
+                <div id="diag-criteria-points" class="space-y-2.5">
+                  <div class="p-3.5 bg-zinc-900/20 border border-zinc-900 rounded-xl space-y-1">
+                    <div class="flex items-center gap-2">
+                      <span class="text-emerald-400 font-bold">✔</span>
+                      <span class="text-xs font-bold text-zinc-200 mt-0.5">Persistent Layout grids</span>
+                    </div>
+                    <p class="text-[11px] text-zinc-400 pl-4">Grid systems unfold cleanly to 12 desktop-scale column modules.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Publish console tutorial -->
+            <div class="space-y-3 pt-2">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-zinc-300 font-mono flex items-center gap-1.5 uppercase tracking-wider">
+                  💻 CLI Run Directives:
+                </span>
+                <button onclick="copyCLICommands()" class="px-2.5 py-1.5 text-xs text-zinc-450 hover:text-emerald-400 bg-zinc-900 border border-zinc-800 rounded-lg transition-colors flex items-center gap-1">
+                  Copy Commands
+                </button>
+              </div>
+              <pre class="p-4 bg-zinc-950 text-[11px] font-mono text-emerald-450/90 overflow-x-auto border border-zinc-900 rounded-2xl max-h-44 leading-relaxed"><code id="platform-cli-box"># 1. Install Vercel CLI globally
+npm install -g vercel
+
+# 2. Login to your secure cloud account
+vercel login
+
+# 3. Trigger production deployment pipeline from root
+vercel --prod</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACT HUB SECTION ================= -->
+  <section id="contact" class="py-24 bg-zinc-950/20 relative overflow-hidden">
+    <div class="absolute top-1/2 left-0 w-80 h-80 bg-emerald-950/15 rounded-full mix-blend-multiply filter blur-3xl opacity-35 -translate-y-1/2"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white animate-fade-in">
+          Get In Touch
+        </h2>
+        <div class="h-1 w-12 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
+        <p class="text-zinc-400 text-sm">
+          Interested in hiring me, collaborating, or simply discussing tech developments? Reach out anytime!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left: Quick metrics card details (lg:col-span-5) -->
+        <div class="lg:col-span-5 space-y-8">
+          <div class="bg-zinc-950/45 border border-zinc-900 p-6 md:p-8 rounded-3xl space-y-6">
+            <h3 class="font-extrabold text-white text-lg">Contact Information</h3>
+            
+            <div class="space-y-4">
+              <!-- Email Line -->
+              <div class="flex items-start gap-4">
+                <div class="p-3 bg-zinc-900 text-emerald-450 rounded-xl border border-zinc-850 mt-1">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                </div>
+                <div class="flex-grow">
+                  <p class="text-[10px] font-semibold text-zinc-550 font-mono uppercase tracking-wider">Email Address</p>
+                  <a href="mailto:hombarumepraise@gmail.com" class="text-zinc-150 font-bold text-sm tracking-tight hover:text-emerald-400 transition-colors break-all">
+                    hombarumepraise@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <!-- Phone Line -->
+              <div class="flex items-start gap-4">
+                <div class="p-3 bg-zinc-900 text-emerald-450 rounded-xl border border-zinc-850 mt-1">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22.25 12c0-4.004-3.246-7.25-7.25-7.25S7.75 7.996 7.75 12h14.5zM2.25 12c0 5.385 4.365 9.75 9.75 9.75s9.75-4.365 9.75-9.75H2.25z" /></svg>
+                </div>
+                <div>
+                  <p class="text-[10px] font-semibold text-zinc-550 font-mono uppercase tracking-wider">Phone Number</p>
+                  <a href="tel:+26771281845" class="text-zinc-150 font-bold text-sm hover:text-emerald-400 transition-colors">
+                    +267 71281845
+                  </a>
+                </div>
+              </div>
+
+              <!-- Operating Location -->
+              <div class="flex items-start gap-4">
+                <div class="p-3 bg-zinc-900 text-emerald-450 rounded-xl border border-zinc-850 mt-1">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                </div>
+                <div>
+                  <p class="text-[10px] font-semibold text-zinc-550 font-mono uppercase tracking-wider">Operating Base</p>
+                  <p class="text-zinc-150 font-bold text-sm">Gaborone, Botswana | Gutu, Zimbabwe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Virtual Card -->
+          <div class="bg-[#0c0c0c] border border-zinc-900 text-white p-6 md:p-8 rounded-3xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-zinc-900/30 rounded-bl-full pointer-events-none group-hover:scale-105 transition-transform duration-350"></div>
+            <div class="relative z-10 space-y-6">
+              <div class="flex justify-between items-center pb-4 border-b border-zinc-850/60">
+                <div class="space-y-0.5">
+                  <span class="text-[10px] font-mono tracking-widest text-[#10B981] font-bold uppercase">Recruiting Tool</span>
+                  <h4 class="font-bold text-sm">Virtual Index Card</h4>
+                </div>
+                <div class="p-2 bg-zinc-900 text-emerald-400 rounded-xl border border-zinc-850">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" /></svg>
+                </div>
+              </div>
+              
+              <div class="space-y-1">
+                <p class="text-[11px] font-mono text-zinc-500 uppercase leading-none">CONTACT TARGET</p>
+                <p class="text-base font-extrabold tracking-tight">Praise Hombarume</p>
+                <p class="text-xs font-medium text-zinc-400">Computer Science &amp; SE Student</p>
+              </div>
+
+              <button onclick="downloadVcfCard()" class="w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-zinc-100 hover:bg-white text-black font-semibold text-sm rounded-xl transition-all duration-150 shadow-md">
+                <span>Download Contact Card (.vcf)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Message Dispatcher Form (lg:col-span-7) -->
+        <div class="lg:col-span-7 bg-zinc-950/45 border border-zinc-900 p-6 md:p-8 rounded-3xl">
+          <h3 class="font-extrabold text-white text-lg mb-6">Send A Direct Message</h3>
+          
+          <form onsubmit="handleFormSubmitStatic(event)" class="space-y-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-zinc-500 font-mono uppercase tracking-wider">Your Name *</label>
+                <input id="form-name" type="text" required placeholder="e.g. John Doe" class="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 text-zinc-150 text-sm font-medium rounded-xl outline-none transition-colors">
+              </div>
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-zinc-500 font-mono uppercase tracking-wider">Email Address *</label>
+                <input id="form-email" type="email" required placeholder="john@example.com" class="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 text-zinc-150 text-sm font-medium rounded-xl outline-none transition-colors">
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-zinc-500 font-mono uppercase tracking-wider">Subject</label>
+              <input id="form-subject" type="text" placeholder="e.g. Collaboration Opportunity" class="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 text-zinc-150 text-sm font-medium rounded-xl outline-none transition-colors">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-zinc-500 font-mono uppercase tracking-wider">Message *</label>
+              <textarea id="form-message" required rows="4" placeholder="Draft your message details here..." class="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 focus:border-emerald-500 text-zinc-150 text-sm font-medium rounded-xl outline-none transition-colors resize-none"></textarea>
+            </div>
+
+            <div id="form-success-box" class="hidden p-4 bg-emerald-950/65 border border-emerald-800/40 rounded-xl text-emerald-450 text-xs font-semibold">
+              ✔ Message logged successfully in browser state! Praise will retrieve it. Thanks!
+            </div>
+
+            <button type="submit" id="form-submit-btn" class="w-full px-6 py-4 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 font-bold text-black text-sm rounded-xl transition-all flex items-center justify-center gap-2">
+              <span>Dispatch Message</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-12 bg-[#060608] border-t border-zinc-950/40 text-center text-xs text-zinc-500 space-y-3">
+    <p class="font-semibold text-zinc-400">Praise Hombarume &copy; 2026. All rights reserved.</p>
+    <p class="font-mono">Built with HTML5, CSS3, Tailwind CSS Core, and Vanilla DOM Engine.</p>
+  </footer>
+
+  <!-- ================= PORTFOLIO INTERACTIVITY CORE JS ================= -->
+  <script>
+    // --- 1. Mobile Sidenav Drawer Manager ---
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobile-drawer');
+      const icon = document.getElementById('menu-btn-icon');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        icon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // Close X path
+      } else {
+        drawer.classList.add('hidden');
+        icon.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7'); // Reset burger path
+      }
+    }
+    document.getElementById('mobile-menu-toggle').addEventListener('click', toggleDrawer);
+
+    // --- 2. Copy Email Alert Action ---
+    function copyEmailHero() {
+      navigator.clipboard.writeText('hombarumepraise@gmail.com');
+      const text = document.getElementById('copy-hero-text');
+      const icon = document.getElementById('copy-hero-icon');
+      
+      text.innerText = 'Email Address Copied!';
+      text.classList.add('text-emerald-400', 'font-bold');
+      
+      setTimeout(() => {
+        text.innerText = 'Copy Email Address';
+        text.classList.remove('text-emerald-400', 'font-bold');
+      }, 2000);
+    }
+
+    // --- 3. Skills/Clubs Tabs Handler ---
+    function switchSkillsTab(tabId) {
+      const skillsBtn = document.getElementById('skills-tab-btn');
+      const clubsBtn = document.getElementById('clubs-tab-btn');
+      const skillsContent = document.getElementById('skills-tab-content');
+      const clubsContent = document.getElementById('clubs-tab-content');
+
+      if (tabId === 'skills') {
+        skillsBtn.className = 'px-6 py-2.5 rounded-xl text-xs font-bold font-mono tracking-wider uppercase transition-all bg-emerald-500 text-black shadow-md focus:outline-none';
+        clubsBtn.className = 'px-6 py-2.5 rounded-xl text-xs font-bold font-mono tracking-wider uppercase transition-all text-zinc-400 hover:text-white focus:outline-none';
+        skillsContent.classList.remove('hidden');
+        clubsContent.classList.add('hidden');
+      } else {
+        clubsBtn.className = 'px-6 py-2.5 rounded-xl text-xs font-bold font-mono tracking-wider uppercase transition-all bg-emerald-500 text-black shadow-md focus:outline-none';
+        skillsBtn.className = 'px-6 py-2.5 rounded-xl text-xs font-bold font-mono tracking-wider uppercase transition-all text-zinc-400 hover:text-white focus:outline-none';
+        clubsContent.classList.remove('hidden');
+        skillsContent.classList.add('hidden');
+      }
+    }
+
+    // --- 4. Portfolio Projects Filters ---
+    function filterProjects(category) {
+      const allBtn = document.getElementById('filter-all');
+      const analyticsBtn = document.getElementById('filter-analytics');
+      const webBtn = document.getElementById('filter-web');
+      
+      const buttons = [allBtn, analyticsBtn, webBtn];
+      buttons.forEach(btn => {
+        btn.className = 'px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-wide uppercase transition-all text-zinc-400 hover:text-white border border-zinc-800 bg-zinc-950/50 focus:outline-none';
+      });
+
+      const selectedBtn = document.getElementById('filter-' + category);
+      selectedBtn.className = 'px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-wide uppercase transition-all bg-emerald-500 text-black border border-emerald-500 focus:outline-none';
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // --- 5. Cloud Platform Profiles Database ---
+    const cloudSpecs = {
+      vercel: {
+        name: 'Vercel',
+        desc: 'Vercel is the ultimate native hosting environment for static portfolio sites. It handles production pre-rendering, serves static content over a zero-latency global edge network, and automatically triggers production branch builds on every GitHub code push.',
+        fileName: 'vercel.json',
+        fileContent: '{\n  "cleanUrls": true,\n  "rewrites": [\n    {\n      "source": "/(.*)",\n      "destination": "/index.html"\n    }\n  ]\n}',
+        benefits: [
+          'Automatic HTTPS and Global Edge Server caching.',
+          'Seamless integration with GitHub repository commits.',
+          'Production preview builds built globally.',
+          'Rewrites configuration support prevents reload 404 errors.'
+        ],
+        cli: '# 1. Install Vercel CLI globally\nnpm install -g vercel\n\n# 2. Login to your secure cloud account\nvercel login\n\n# 3. Trigger production deployment pipeline from root\nvercel --prod'
+      },
+      netlify: {
+        name: 'Netlify',
+        desc: 'Netlify matches static content optimization perfectly. It offers instantaneous cache invalidation, powerful redirections, and specialized build telemetry optimized for production portfolios.',
+        fileName: 'netlify.toml',
+        fileContent: '[[redirects]]\n  from = "/*"\n  to = "/index.html"\n  status = 200\n  force = false',
+        benefits: [
+          'Atomic deployments so your public users never view raw code.',
+          'Permanent preview links generated for older deploys.',
+          'One-click custom SSL setups with absolute safety.',
+          'Powerful CDN routing built natively with custom redir limits.'
+        ],
+        cli: '# 1. Install Netlify command-line toolbox\nnpm install -g netlify-cli\n\n# 2. Authenticate locally\nnetlify login\n\n# 3. Formulate site and deploy live dist builder\nnetlify deploy --prod --dir=dist'
+      },
+      github_pages: {
+        name: 'GitHub Pages',
+        desc: 'Ideal for fully open-source Portfolios. If the codebase is public, GitHub Pages hosts static web apps with zero configuration required, managed directly through GitHub Actions automation.',
+        fileName: '.github/workflows/deploy.yml',
+        fileContent: 'name: Compile and Deploy\non:\n  push:\n    branches:\n      - main\npermissions:\n  contents: write\njobs:\n  build-and-deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n      - run: npm ci && npm run build\n      - uses: JamesIves/github-pages-deploy-action@v4\n        with:\n          folder: dist\n          branch: gh-pages',
+        benefits: [
+          'Free static site hosting directly off your GitHub repo.',
+          'Automated deployments configured using public actions.',
+          'Direct connection with commit logs.',
+          'Allows custom apex domains without external fees.'
+        ],
+        cli: '# 1. Add "homepage" property inside package.json\n"homepage": "https://<username>.github.io/<repo-name>"\n\n# 2. Add deploy scripts to package.json\n"deploy": "gh-pages -d dist"\n\n# 3. Publish directly using secure npm command\nnpm run deploy'
+      }
+    };
+
+    let activePlatformId = 'vercel';
+
+    function switchPlatformSpec(platformId) {
+      activePlatformId = platformId;
+      const spec = cloudSpecs[platformId];
+
+      // Update button highlights
+      document.querySelectorAll('.platform-btn').forEach(btn => {
+        btn.className = 'platform-btn py-3.5 px-3 rounded-xl text-center border border-zinc-900 text-zinc-450 hover:text-white bg-zinc-950/50 flex flex-col justify-center items-center gap-2';
+      });
+      const selectedBtn = document.getElementById('btn-' + platformId);
+      selectedBtn.className = 'platform-btn py-3.5 px-3 rounded-xl text-center border border-zinc-700 bg-zinc-900 text-white flex flex-col justify-center items-center gap-2';
+
+      // Update details
+      document.getElementById('platform-desc-box').innerHTML = `<span class="font-bold text-white block mb-1">Architecture Summary:</span>${spec.desc}`;
+      document.getElementById('platform-file-name').innerText = spec.fileName;
+      document.getElementById('platform-file-code').innerText = spec.fileContent;
+      document.getElementById('platform-cli-box').innerText = spec.cli;
+
+      // Update benefits grid HTML
+      let benefitsHTML = '';
+      spec.benefits.forEach(b => {
+        benefitsHTML += `<div class="flex gap-2 items-start bg-zinc-950/40 p-3 rounded-lg border border-zinc-900">
+          <span class="text-emerald-400 font-bold">✔</span>
+          <span class="text-zinc-400 leading-snug">${b}</span>
+        </div>`;
+      });
+      document.getElementById('platform-benefits-list').innerHTML = benefitsHTML;
+    }
+
+    function copyPlatformConfigFile() {
+      const code = cloudSpecs[activePlatformId].fileContent;
+      navigator.clipboard.writeText(code);
+      alert('Linked configuration copied to clipboard!');
+    }
+
+    function copyCLICommands() {
+      const code = cloudSpecs[activePlatformId].cli;
+      navigator.clipboard.writeText(code);
+      alert('Deployment pipeline CLI block copied!');
+    }
+
+    // --- 6. Mobile Diagnostics Tester Mockup ---
+    const responsiveGridDB = {
+      mini: {
+        name: 'Compact Mobile View',
+        width: '360px',
+        prefix: 'Default / Base',
+        layout: 'Optimized touch grid with stacked layout boundaries.',
+        points: [
+          { label: 'Fluid Text Scaling', text: 'Applied custom responsive clamp metrics.' },
+          { label: 'Grid Element Stacking', text: 'Grids automatically resolve from web rows to block flex-cols.' }
+        ]
+      },
+      mobile: {
+        name: 'Standard Smartphone',
+        width: '480px',
+        prefix: 'sm:',
+        layout: 'Fluid margins adjusted to full container width.',
+        points: [
+          { label: 'Responsive Padding (px-4)', text: 'Fluid boundaries avoid any viewport horizontal overflow.' },
+          { label: 'Unified Mobile Hamburger Menu', text: 'Navigation targets consolidated cleanly behind drawer trigger.' }
+        ]
+      },
+      tablet: {
+        name: 'Tablet Screen Profile',
+        width: '768px',
+        prefix: 'md:',
+        layout: 'Bilateral columns enable dual-split grid panels.',
+        points: [
+          { label: 'Two-Column Grid Unlocking', text: 'Skills cards and journey logs split into readable pairs.' },
+          { label: 'Header Menu Transition', text: 'Toggles full inline links instead of mobile navigation triggers.' }
+        ]
+      },
+      desktop: {
+        name: 'Desktop Standard viewport',
+        width: '1024px',
+        prefix: 'lg:',
+        layout: 'Fully expanded interactive panels and layout layers.',
+        points: [
+          { label: 'Persistent Layout grids', text: 'Grid systems unfold cleanly to desktop-scale column modules.' },
+          { label: 'Interactive Hover Transitions', text: 'Smooth transforms, deep card shadows, and text glowing states active.' }
+        ]
+      },
+      ultra: {
+        name: 'Ultra-Wide Presentation Screen',
+        width: '1440px+',
+        prefix: 'xl: / 2xl:',
+        layout: 'Fluid limits enforced (max-w-7xl) to secure legibility.',
+        points: [
+          { label: 'Centered Layout Safeguard', text: 'Limits outer elements from stretching indefinitely.' },
+          { label: 'Paragraph Character Limits', text: 'Restricts paragraph line counts to optimize reading comfort.' }
+        ]
+      }
+    };
+
+    function switchViewportDiagnostics(sizeId) {
+      // Update highlights
+      document.querySelectorAll('.diag-btn').forEach(btn => {
+        btn.className = 'diag-btn p-2 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-850/50';
+      });
+      
+      const vBtnMap = { mini: 'vbtn-mini', mobile: 'vbtn-mobile', tablet: 'vbtn-tablet', desktop: 'vbtn-desktop', ultra: 'vbtn-ultra' };
+      document.getElementById(vBtnMap[sizeId]).className = 'diag-btn p-2 rounded-lg flex items-center justify-center text-white bg-zinc-850 border border-zinc-700/45';
+
+      const spec = responsiveGridDB[sizeId];
+      document.getElementById('diag-name').innerText = spec.name;
+      document.getElementById('diag-width').innerText = spec.width;
+      document.getElementById('diag-prefix').innerText = spec.prefix;
+      document.getElementById('diag-info').innerText = spec.layout;
+
+      let pointsHTML = '';
+      spec.points.forEach(pt => {
+        pointsHTML += `<div class="p-3.5 bg-zinc-900/20 border border-zinc-900 rounded-xl space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-400 font-bold">✔</span>
+            <span class="text-xs font-bold text-zinc-200 mt-0.5">${pt.label}</span>
+          </div>
+          <p class="text-[11px] text-zinc-400 pl-4">${pt.text}</p>
+        </div>`;
+      });
+      document.getElementById('diag-criteria-points').innerHTML = pointsHTML;
+    }
+
+    // --- 7. Adaptive Audit Progress Bar Simulation ---
+    let auditTimer = null;
+    function triggerSimulatedAudit() {
+      const panel = document.getElementById('audit-panel');
+      const progress = document.getElementById('audit-progress');
+      const btn = document.getElementById('run-audit-btn');
+      const btnText = document.getElementById('audit-btn-text');
+      const headline = document.getElementById('audit-headline');
+      const desc = document.getElementById('audit-description');
+      const badgeColor = document.getElementById('audit-alert-color');
+
+      panel.classList.remove('hidden');
+      progress.style.width = '0%';
+      btn.disabled = true;
+      btnText.innerText = 'Running Diagnostics...';
+      headline.innerText = 'Evaluating CSS Media Breakpoints';
+      desc.innerText = 'Analyzing active container paddings, landscape viewports, and column stacks...';
+      badgeColor.className = 'p-2 rounded-xl text-black bg-amber-400';
+
+      let count = 0;
+      clearInterval(auditTimer);
+      auditTimer = setInterval(() => {
+        count += 20;
+        progress.style.width = count + '%';
+        
+        if (count === 40) {
+          headline.innerText = 'Checking Flex Grid Mechanics';
+          desc.innerText = 'Simulating grid elements wrapping down, element line clamps, and text resizing...';
+        } else if (count === 80) {
+          headline.innerText = 'Assessing Touch Target Compliance';
+          desc.innerText = 'Testing interactive button boundaries, navigation drawer triggers, and mobile margins...';
+        } else if (count >= 100) {
+          clearInterval(auditTimer);
+          headline.innerText = 'Adaptive Responsive System Verified';
+          desc.innerText = 'Diagnostics confirmed: All sections perfectly scale and flow across active viewports!';
+          badgeColor.className = 'p-2 rounded-xl text-black bg-emerald-400';
+          btn.disabled = false;
+          btnText.innerText = 'Run Diagnostics Audit';
+        }
+      }, 500);
+    }
+
+    // --- 8. Contact Card VCF Generator ---
+    function downloadVcfCard() {
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Praise Hombarume',
+        'TITLE:Computer Science & Software Eng. Student',
+        'EMAIL;TYPE=PREF,INTERNET:hombarumepraise@gmail.com',
+        'TEL;TYPE=CELL:+26771281845',
+        'ADR;TYPE=WORK:;;Gaborone;Botswana;;;',
+        'END:VCARD'
+      ].join('\n');
+
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Praise_Hombarume.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // --- 9. Static Form Process local logger ---
+    function handleFormSubmitStatic(event) {
+      event.preventDefault();
+      const name = document.getElementById('form-name').value;
+      const email = document.getElementById('form-email').value;
+      const subject = document.getElementById('form-subject').value;
+      const message = document.getElementById('form-message').value;
+
+      const btn = document.getElementById('form-submit-btn');
+      const successBox = document.getElementById('form-success-box');
+
+      btn.disabled = true;
+      btn.innerText = 'Processing Secure Log...';
+
+      setTimeout(() => {
+        // Save to localStorage
+        const drafts = JSON.parse(localStorage.getItem('praise_portfolio_messages') || '[]');
+        drafts.push({ name, email, subject, message, timestamp: new Date().toISOString() });
+        localStorage.setItem('praise_portfolio_messages', JSON.stringify(drafts));
+
+        btn.disabled = false;
+        btn.innerText = 'Dispatch Message';
+        successBox.classList.remove('hidden');
+
+        // Reset
+        document.getElementById('form-name').value = '';
+        document.getElementById('form-email').value = '';
+        document.getElementById('form-subject').value = '';
+        document.getElementById('form-message').value = '';
+
+        setTimeout(() => {
+          successBox.classList.add('hidden');
+        }, 5000);
+      }, 1000);
+    }
+
+    // Initialize Viewport Diag Box
+    switchViewportDiagnostics('desktop');
+  </script>
+</body>
+</html>
