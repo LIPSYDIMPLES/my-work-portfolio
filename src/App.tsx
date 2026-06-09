@@ -39,7 +39,7 @@ export default function App() {
       
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only fixed top-4 left-4 z-[100] px-4 py-2 bg-emerald-600 text-white font-bold rounded-xl shadow-lg border border-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+        className="sr-only focus:not-sr-only fixed top-4 left-4 z-100 px-4 py-2 bg-emerald-600 text-white font-bold rounded-xl shadow-lg border border-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
       >
         Skip to main content
       </a>
@@ -54,7 +54,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
           
           <a href="#" className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-xl px-1 py-0.5">
-            <div className="w-9 h-9 bg-gradient-to-tr from-[#10B981] to-[#059669] rounded-xl flex items-center justify-center text-black font-extrabold text-base shadow-sm group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 bg-linear-to-tr from-[#10B981] to-[#059669] rounded-xl flex items-center justify-center text-black font-extrabold text-base shadow-sm group-hover:scale-105 transition-transform">
               P
             </div>
             <span className="font-display font-bold text-white text-lg tracking-tight group-hover:text-emerald-400 transition-colors">
@@ -82,11 +82,12 @@ export default function App() {
           </nav>
 
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             id="mobile-nav-trigger"
-            className="md:hidden p-2 text-zinc-400 hover:text-white bg-zinc-900 rounded-xl border border-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            className="md:hidden p-2 text-zinc-400 hover:text-white bg-zinc-900 rounded-xl border border-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
             aria-label="Toggle navigation menu"
-            aria-expanded={mobileMenuOpen}
+            aria-expanded={mobileMenuOpen ? 'true' : 'false'}
           >
             {mobileMenuOpen ? <X id="menu-close-icon" className="w-5 h-5" /> : <Menu id="menu-open-icon" className="w-5 h-5" />}
           </button>
@@ -140,7 +141,7 @@ export default function App() {
             
             <div className="col-span-1 md:col-span-5 space-y-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-tr from-[#10B981] to-[#059669] rounded-lg flex items-center justify-center text-black font-extrabold text-sm">
+                <div className="w-8 h-8 bg-linear-to-tr from-[#10B981] to-[#059669] rounded-lg flex items-center justify-center text-black font-extrabold text-sm">
                   P
                 </div>
                 <span className="font-display font-bold text-white text-base tracking-tight">
